@@ -25,7 +25,7 @@
             <p>Andrew performs Gargoyles, Op. 29, by Lowell Liebermann:
 <ul class="no-bullets-list">
 <li>0:23 I. Presto</li>
-<li>2:13 II. Adagio semplice, ma con molto rubato</li>
+<li><a href="video01.html?t=133">2:13 II. Adagio semplice, ma con molto rubato</a></li>
 <li>4:47 III. Allegro moderato</li>
 <li>7:18 IV. Presto feroce</li>
 </ul>
@@ -36,5 +36,22 @@
 
         <a class="back-link" href="index.html">← Back to Table of Contents</a>
     </div>
+
+<script>
+        document.addEventListener('DOMContentLoaded', function() {
+            const urlParams = new URLSearchParams(window.location.search);
+            const startTime = urlParams.get('t'); // Gets the 't' value from the URL (e.g., 45)
+            const videoIframe = document.getElementById('main-video');
+            
+            if (startTime) {
+                // Get the current source (which includes the video ID)
+                let src = videoIframe.getAttribute('src').split('?')[0]; 
+                
+                // Construct the new source URL with the start time
+                videoIframe.setAttribute('src', `${src}?start=${startTime}`);
+            }
+        });
+</script>
+
 </body>
 </html>
