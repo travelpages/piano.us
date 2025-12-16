@@ -48,7 +48,7 @@
                 let src = videoIframe.getAttribute('src').split('?')[0]; 
                 
                 // Construct the new source URL with the start time
-                videoIframe.setAttribute('src', `${src}?start=${startTime}`);
+                videoIframe.setAttribute('src', `${src}?start=${startTime}&autoplay=1`);
             }
         });
 </script>
