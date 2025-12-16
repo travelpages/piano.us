@@ -37,7 +37,22 @@
         <a class="back-link" href="index.html">← Back to Table of Contents</a>
     </div>
 
-<script src="script.js"></script>
+<script>
+    document.addEventListener('DOMContentLoaded', function() {
+    const urlParams = new URLSearchParams(window.location.search);
+    const startTime = urlParams.get('t'); // Gets the 't' value from the URL (e.g., 45)
+    const videoIframe = document.getElementById('main-video');
+    
+    if (startTime && videoIframe) {
+        // Get the current source (which includes the video ID) by taking the part before any '?'
+        let src = videoIframe.getAttribute('src').split('?')[0]; 
+        
+        // Construct the new source URL with the start time AND autoplay
+        videoIframe.setAttribute('src', `${src}?start=${startTime}&autoplay=1`);
+    }
+    // If no startTime is present, the iframe's default src (set in HTML) takes effect.
+});
+</script>
 
 </body>
 </html>
